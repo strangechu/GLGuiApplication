@@ -36,9 +36,15 @@
     <ClCompile Include="GLGuiApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="GLGuiApplication.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="GLWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
