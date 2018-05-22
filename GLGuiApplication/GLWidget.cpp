@@ -1,5 +1,7 @@
 #include "GLWidget.h"
 #include <GL/glut.h>
+#include "QmouseEvent"
+#include <math.h>
 
 GLWidget::GLWidget(QWidget *parent) : QOpenGLWidget(parent)
 {
@@ -25,8 +27,9 @@ void GLWidget::paintGL()
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(0, 0, 5, 0, 0, 0, 0, 1, 0);
+	gluLookAt(0, 0, 0, 0, 0, -5, 0, 1, 0);
 
+	glTranslatef(0.0, 0.0, -10.0);
 	glColor3f(1, 0, 0);
 	glutSolidSphere(1, 20, 20);
 }
@@ -36,5 +39,18 @@ void GLWidget::resizeGL(int w, int h)
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45.0, (float)w / h, 0.01, 100.0);
+	gluPerspective(45.0, (float)w / h, 0.01, 1000.0);
+}
+
+void GLWidget::mousePressEvent(QMouseEvent* event)
+{
+	int x = event->x();
+	int y = event->y();
+	float width = 300;
+	float height = 200;
+
+	dx = x - width / 2;
+	dy = height / 2 - y;
+	dz = -(height / 2) / tan(3.14 / 4 * 0.5);
+	update();
 }

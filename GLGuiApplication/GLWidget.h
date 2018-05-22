@@ -11,5 +11,9 @@ public:
 	void GLWidget::initializeGL();
 	void GLWidget::paintGL();
 	void GLWidget::resizeGL(int w, int h);
+
+	void GLWidget::mousePressEvent(QMouseEvent* event);
+
+	float dx, dy, dz = 0.0f;
 };
 
